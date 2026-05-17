@@ -101,7 +101,13 @@ app.use((request, response, next) => {
 });
 
 app.get("/health", (request, response) => {
-  response.json({ ok: true, name: "Who Texted?", rooms: rooms.size, publicQueue: publicQueue.length });
+  response.json({
+    ok: true,
+    message: "Who Texted backend is running",
+    name: "Who Texted?",
+    rooms: rooms.size,
+    publicQueue: publicQueue.length
+  });
 });
 
 app.get("/api/catalog", (request, response) => {
@@ -118,6 +124,10 @@ if (fs.existsSync(clientDist)) {
   app.use(express.static(clientDist));
   app.get("*", (request, response) => {
     response.sendFile(path.join(clientDist, "index.html"));
+  });
+} else {
+  app.get("/", (request, response) => {
+    response.type("text/plain").send("Who Texted backend is running");
   });
 }
 
