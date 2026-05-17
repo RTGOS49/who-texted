@@ -1,0 +1,27 @@
+{
+  "name": "who-texted",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Who Texted? - a public browser party game with anonymous mystery chats.",
+  "main": "server/index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "server:dev": "node --watch server/index.js",
+    "client:dev": "vite --host 0.0.0.0 --port 5173",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "check": "node --check server/index.js && node --check server/gameLogic.js && node --check server/gameData.js"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^4.4.1",
+    "concurrently": "^9.1.2",
+    "express": "^4.21.2",
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
+    "vite": "^5.4.11"
+  },
+  "devDependencies": {}
+}
